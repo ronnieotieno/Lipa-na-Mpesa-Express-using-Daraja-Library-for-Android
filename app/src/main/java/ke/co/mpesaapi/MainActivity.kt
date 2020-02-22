@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 phoneNumber,
                 "174379",
                 phoneNumber,
-                "http://callbackurl.com/checkout.php", // call back url send back payload info if the transactions went through. Its important inorder to update ui after user has paid, its essential but the serice can work without it.
+                "http://callbackurl.com/checkout.php", // call back url send back payload info if the transactions went through. Its important inorder to update ui after user has paid, its essential but the service can work without it.
                 "001ABC",
                 "Goods Payment"
             )
