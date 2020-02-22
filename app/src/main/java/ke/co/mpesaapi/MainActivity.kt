@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             val phoneNumber = phoneNumber1.replace(" ", "")
 
             val lnmExpress = LNMExpress(
-                "174379",
+                "174379", //Test credential but shortcode is mostly paybill number, email mpesa businnes fo clarification
                 "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",  //https://developer.safaricom.co.ke/test_credentials, you will need to request real ones from safaricom by emailing mpesa businnes
                 TransactionType.CustomerPayBillOnline,  // TransactionType.CustomerPayBillOnline  <- Apply any of these two
                 "1",
