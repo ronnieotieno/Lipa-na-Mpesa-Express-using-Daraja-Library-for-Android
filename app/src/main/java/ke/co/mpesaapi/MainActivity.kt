@@ -9,6 +9,7 @@ import com.androidstudy.daraja.DarajaListener
 import com.androidstudy.daraja.model.AccessToken
 import com.androidstudy.daraja.model.LNMExpress
 import com.androidstudy.daraja.model.LNMResult
+import com.androidstudy.daraja.util.Env
 import com.androidstudy.daraja.util.TransactionType
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         daraja = Daraja.with(
             "Uku3wUhDw9z0Otdk2hUAbGZck8ZGILyh", // both Consumer and secret key you get after creating an app on Safaricom sandbox
             "JDjpQBm5HpYwk38b",
+            Env.SANDBOX, //Remember to change this to Env.Production when using production credentials, Sandbox is just for test
             object : DarajaListener<AccessToken> {
                 override fun onResult(accessToken: AccessToken) {
                     Log.d(
@@ -60,6 +62,7 @@ class MainActivity : AppCompatActivity() {
             )
 
 
+
             daraja.requestMPESAExpress(lnmExpress,
                 object : DarajaListener<LNMResult> {
                     override fun onResult(lnmResult: LNMResult) {
@@ -91,6 +94,3 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
-
-
-
