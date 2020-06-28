@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "205380031431",
+    "firebase_url": "https://mpesaapisecond.firebaseio.com",
+    "project_id": "mpesaapisecond",
+    "storage_bucket": "mpesaapisecond.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205380031431:android:adddc248f9c83c7d5bbfe2",
+        "android_client_info": {
+          "package_name": "ke.co.mpesaapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205380031431-2m4p6ghhq0fh8n9v1tknn0v3hrdg76pi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWoXla9ok19CeWUnTRYZBT_bz14vvJm3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205380031431-2m4p6ghhq0fh8n9v1tknn0v3hrdg76pi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
