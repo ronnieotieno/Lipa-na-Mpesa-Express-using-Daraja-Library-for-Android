@@ -14,13 +14,19 @@ import com.androidstudy.daraja.util.TransactionType
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MpesaListener {
 
     lateinit var daraja: Daraja
+
+    companion object {
+        lateinit var mpesaListener: MpesaListener
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mpesaListener = this
 
         daraja = Daraja.with(
             "O8AUeTLAIEMx3CDAyua6nimmGOzjcV5y",
@@ -90,6 +96,33 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             )
+        }
+
+    }
+
+    override fun sendSuccesfull(amount: String, phone: String, date: String, receipt: String) {
+
+
+        runOnUiThread {
+            Toast.makeText(
+                this, "Payment Succesfull\n" +
+                        "Receipt: $receipt\n" +
+                        "Date: $date\n" +
+                        "Phone: $phone\n" +
+                        "Amount: $amount", Toast.LENGTH_LONG
+            ).show()
+
+        }
+    }
+
+    override fun sendFailed(reason: String) {
+
+        runOnUiThread {
+            Toast.makeText(
+                this, "Payment Failed\n" +
+                        "Reason: $reason"
+                , Toast.LENGTH_LONG
+            ).show()
         }
 
     }

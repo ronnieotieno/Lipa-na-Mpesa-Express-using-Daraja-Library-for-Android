@@ -28,6 +28,10 @@ class FirebaseMessagingService :
         var id = mpesaResponse.Body.stkCallback.CheckoutRequestID
 
         if (mpesaResponse.Body.stkCallback.ResultCode != 0) {
+
+            var reason = mpesaResponse.Body.stkCallback.ResultDesc
+
+            MainActivity.mpesaListener.sendFailed(reason)
             Log.d("MessagingServiceThird", "Operation Failed")
         } else {
             Log.d("MessagingServiceThird", "Operation Success")
@@ -57,7 +61,7 @@ class FirebaseMessagingService :
                 }
 
             }
-
+            MainActivity.mpesaListener.sendSuccesfull(amount, phone, date, receipt)
             Log.d("MetaData", "\nReceipt: $receipt\nDate: $date\nPhone: $phone\nAmount: $amount")
             //Log.d("NewDate", getDate(date.toLong()))
         }
