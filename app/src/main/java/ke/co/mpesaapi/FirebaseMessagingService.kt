@@ -5,8 +5,6 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.google.gson.Gson
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class FirebaseMessagingService :
@@ -61,8 +59,11 @@ class FirebaseMessagingService :
                 }
 
             }
-            MainActivity.mpesaListener.sendSuccesfull(amount, phone, date, receipt)
-            Log.d("MetaData", "\nReceipt: $receipt\nDate: $date\nPhone: $phone\nAmount: $amount")
+            MainActivity.mpesaListener.sendSuccesfull(amount, phone, getDate(date), receipt)
+            Log.d(
+                "MetaData",
+                "\nReceipt: $receipt\nDate: ${getDate(date)}\nPhone: $phone\nAmount: $amount"
+            )
             //Log.d("NewDate", getDate(date.toLong()))
         }
 
@@ -71,12 +72,15 @@ class FirebaseMessagingService :
 
     }
 
-    private fun getDate(timestamp: Long): String {
-        val calendar = Calendar.getInstance(Locale.ENGLISH)
-        calendar.timeInMillis = timestamp
-        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm a")
-        val date = sdf.format(calendar)
-        return date
+    private fun getDate(date: String): String {
+
+        return "${date.subSequence(6, 8)} ${date.subSequence(4, 6)} ${date.subSequence(
+            0,
+            4
+        )} at ${date.subSequence(8, 10)} : ${date.subSequence(10, 12)} : ${date.subSequence(
+            12,
+            14
+        )}"
     }
 
     override fun onNewToken(token: String) {
