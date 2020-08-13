@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), MpesaListener {
                 phoneNumber,
                 "174379",
                 phoneNumber,
-                "https://us-central1-mpesaapisecond.cloudfunctions.net/api/myCallbackUrl", // call back url send back payload info if the transactions went through. Its important inorder to update ui after user has paid, its essential but the service can work without it.
+                "https://us-central1-mpesaapisecond.cloudfunctions.net/myCallbackUrl", // call back url send back payload info if the transactions went through. Its important inorder to update ui after user has paid, its essential but the service can work without it.
                 "001ABC",
                 "Goods Payment"
             )
