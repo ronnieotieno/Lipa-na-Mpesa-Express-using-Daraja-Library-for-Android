@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity(), MpesaListener {
 
         runOnUiThread {
             Toast.makeText(
-                this, "Payment Succesfull\n" +
+                this, "Payment Successful\n" +
                         "Receipt: $receipt\n" +
                         "Date: $date\n" +
                         "Phone: $phone\n" +
