@@ -23,11 +23,11 @@ class FirebaseMessagingService :
 
         Log.d("MessagingServiceSecond", mpesaResponse.toString())
 
-        var id = mpesaResponse.Body.stkCallback.CheckoutRequestID
+        val id = mpesaResponse.Body.stkCallback.CheckoutRequestID
 
         if (mpesaResponse.Body.stkCallback.ResultCode != 0) {
 
-            var reason = mpesaResponse.Body.stkCallback.ResultDesc
+            val reason = mpesaResponse.Body.stkCallback.ResultDesc
 
             MainActivity.mpesaListener.sendFailed(reason)
             Log.d("MessagingServiceThird", "Operation Failed")
@@ -42,7 +42,7 @@ class FirebaseMessagingService :
             var amount = ""
 
 
-            for (item in list) {
+            list.forEach { item ->
 
                 if (item.Name == "MpesaReceiptNumber") {
                     receipt = item.Value
@@ -59,12 +59,12 @@ class FirebaseMessagingService :
                 }
 
             }
-            MainActivity.mpesaListener.sendSuccesfull(amount, phone, getDate(date), receipt)
+            MainActivity.mpesaListener.sendSuccessful(amount, phone, getDate(date), receipt)
             Log.d(
                 "MetaData",
                 "\nReceipt: $receipt\nDate: ${getDate(date)}\nPhone: $phone\nAmount: $amount"
             )
-            //Log.d("NewDate", getDate(date.toLong()))
+
         }
 
         FirebaseMessaging.getInstance()
@@ -74,13 +74,17 @@ class FirebaseMessagingService :
 
     private fun getDate(date: String): String {
 
-        return "${date.subSequence(6, 8)} ${date.subSequence(4, 6)} ${date.subSequence(
-            0,
-            4
-        )} at ${date.subSequence(8, 10)} : ${date.subSequence(10, 12)} : ${date.subSequence(
-            12,
-            14
-        )}"
+        return "${date.subSequence(6, 8)} ${date.subSequence(4, 6)} ${
+            date.subSequence(
+                0,
+                4
+            )
+        } at ${date.subSequence(8, 10)} : ${date.subSequence(10, 12)} : ${
+            date.subSequence(
+                12,
+                14
+            )
+        }"
     }
 
     override fun onNewToken(token: String) {

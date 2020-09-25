@@ -34,10 +34,7 @@ class MainActivity : AppCompatActivity(), MpesaListener {
             Env.SANDBOX, //Remember to change this to Env.Production when using production credentials, Sandbox is just for test
             object : DarajaListener<AccessToken> {
                 override fun onResult(accessToken: AccessToken) {
-                    Log.d(
-                        this@MainActivity.javaClass.simpleName,
-                        "token here   ${accessToken.access_token}"
-                    )
+
                     Toast.makeText(
                         this@MainActivity,
                         "MPESA TOKEN : ${accessToken.access_token}",
@@ -46,7 +43,7 @@ class MainActivity : AppCompatActivity(), MpesaListener {
                 }
 
                 override fun onError(error: String) {
-                    Log.d(this.javaClass.simpleName, "Token error $error")
+                    Log.d("Token", "Token error $error")
                 }
             })
 
@@ -71,26 +68,17 @@ class MainActivity : AppCompatActivity(), MpesaListener {
 
                         FirebaseMessaging.getInstance()
                             .subscribeToTopic(lnmResult.CheckoutRequestID.toString())
-
-                        Log.d(
-                            this@MainActivity.javaClass.simpleName,
-                            "Response here ${lnmResult.ResponseDescription}"
-                        )
                         Toast.makeText(
                             this@MainActivity,
-                            "Response here ${lnmResult.ResponseDescription}",
+                            lnmResult.ResponseDescription,
                             Toast.LENGTH_SHORT
                         ).show()
                     }
 
                     override fun onError(error: String) {
-                        Log.d(
-                            this.javaClass.simpleName,
-                            "Error here $error"
-                        )
                         Toast.makeText(
                             this@MainActivity,
-                            "Error here $error",
+                            error,
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -100,7 +88,7 @@ class MainActivity : AppCompatActivity(), MpesaListener {
 
     }
 
-    override fun sendSuccesfull(amount: String, phone: String, date: String, receipt: String) {
+    override fun sendSuccessful(amount: String, phone: String, date: String, receipt: String) {
 
 
         runOnUiThread {
@@ -120,8 +108,7 @@ class MainActivity : AppCompatActivity(), MpesaListener {
         runOnUiThread {
             Toast.makeText(
                 this, "Payment Failed\n" +
-                        "Reason: $reason"
-                , Toast.LENGTH_LONG
+                        "Reason: $reason", Toast.LENGTH_LONG
             ).show()
         }
 
